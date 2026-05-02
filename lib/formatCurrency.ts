@@ -1,8 +1,5 @@
-import type { Lang } from "@/data/ui-strings";
-
-export function formatPkr(amount: number, lang: Lang = "en"): string {
-  const locale = lang === "ur" ? "ur-PK" : "en-PK";
-  return new Intl.NumberFormat(locale, {
+export function formatPkr(amount: number, _lang = "en"): string {
+  return new Intl.NumberFormat("en-PK", {
     style: "currency",
     currency: "PKR",
     maximumFractionDigits: 0,
