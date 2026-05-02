@@ -206,10 +206,10 @@ function SignatureCarousel() {
         </h2>
 
         {/* Slide */}
-        <div className="relative flex flex-col-reverse items-center gap-8 md:flex-row md:gap-14">
+        <div className="relative mx-auto flex max-w-4xl flex-col-reverse items-center gap-10 md:flex-row md:gap-16">
 
           {/* Left — product image */}
-          <div className="relative h-64 w-48 shrink-0 sm:h-80 sm:w-60">
+          <div className="relative h-80 w-64 shrink-0 sm:h-96 sm:w-72">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={product.slug + "-img"}
@@ -225,7 +225,7 @@ function SignatureCarousel() {
                   src={product.images[0]}
                   alt={name}
                   fill
-                  sizes="240px"
+                  sizes="288px"
                   className="object-contain drop-shadow-2xl"
                 />
               </motion.div>
@@ -245,10 +245,10 @@ function SignatureCarousel() {
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               >
                 <p className="eyebrow">{tagline}</p>
-                <h3 className="mt-3 font-sans text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+                <h3 className="mt-3 font-sans text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
                   {name}
                 </h3>
-                <p className="mt-5 max-w-md text-sm font-light leading-relaxed text-white/55">
+                <p className="mt-5 max-w-lg text-base font-light leading-relaxed text-white/60">
                   {description}
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">

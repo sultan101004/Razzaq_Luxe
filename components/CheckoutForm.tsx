@@ -238,7 +238,10 @@ export function CheckoutForm() {
                             {t.qty} {line.quantity}
                           </p>
                           <p className="mt-1 text-sm text-gold-main">
-                            {formatPkr(line.product.price * line.quantity)}
+                            {formatPkr(
+                              line.product.price * line.quantity,
+                              "en"
+                            )}
                           </p>
                         </div>
                       </div>
