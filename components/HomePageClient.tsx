@@ -115,7 +115,7 @@ function TrendingSection() {
                 <div className="relative h-56 w-full overflow-hidden">
                   {/* Rank badge */}
                   <span className="absolute left-3 top-3 z-10 inline-flex items-center rounded-full bg-gold-main px-3 py-1 font-sans text-[9px] font-light uppercase tracking-[0.2em] text-noir">
-                    {RANK_LABELS[i]}
+                    {RANK_LABELS[i % RANK_LABELS.length]}
                   </span>
                   <Image
                     src={product.images[0]}

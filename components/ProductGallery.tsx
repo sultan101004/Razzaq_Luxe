@@ -97,7 +97,7 @@ export function ProductGallery({
             "absolute left-2 top-2 z-10 rounded-sm px-2 py-0.5 text-[8px] font-normal uppercase tracking-[0.18em]",
             BADGE_VARIANTS[i % BADGE_VARIANTS.length].bg
           )}>
-            {i === 0 ? (badge ?? "Selling Fast!") : BADGE_VARIANTS[i].label}
+            {i === 0 ? (badge ?? "Selling Fast!") : BADGE_VARIANTS[i % BADGE_VARIANTS.length].label}
           </span>
           <Image
             src={src}
