@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 import { FadeIn } from "@/components/FadeIn";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useLang } from "@/context/LangContext";

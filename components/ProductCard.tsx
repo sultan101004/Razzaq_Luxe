@@ -37,7 +37,7 @@ export function ProductCard({
 }: ProductCardProps) {
   const { addItem } = useCart();
   const { t } = useLang();
-  const [imgLoaded, setImgLoaded] = useState(false);
+  const [, setImgLoaded] = useState(false);
 
   const isLarge = size === "large";
   const imgHeight = isLarge

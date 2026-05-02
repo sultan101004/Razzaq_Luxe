@@ -2,7 +2,6 @@
 
 import { MessageCircle } from "lucide-react";
 
-import { useLang } from "@/context/LangContext";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
 
