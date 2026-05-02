@@ -1,0 +1,9 @@
+# Copy to `public/robots.txt` ONLY if not using Next.js `app/robots.ts`.
+# Replace hostname with your APP_URL / production domain.
+
+User-agent: *
+Allow: /
+Disallow: /checkout/
+Disallow: /api/
+
+Sitemap: https://razzaqluxe.com/sitemap.xml

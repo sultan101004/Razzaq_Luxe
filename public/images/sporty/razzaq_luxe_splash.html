@@ -1,0 +1,234 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Cinzel:wght@400;500;700&family=Jost:wght@200;300&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#000;}
+.splash{width:100%;height:600px;background:#000;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;}
+canvas#bg{position:absolute;inset:0;width:100%;height:100%;}
+.logo-wrap{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;gap:0;}
+svg#logoSvg{overflow:visible;}
+.wordmark{display:flex;flex-direction:column;align-items:center;margin-top:22px;gap:6px;}
+.brand-main{font-family:'Cinzel',serif;font-size:32px;font-weight:500;letter-spacing:0.22em;color:#c9a84c;opacity:0;transform:translateY(18px);}
+.brand-sub{font-family:'Cinzel',serif;font-size:11px;font-weight:400;letter-spacing:0.65em;color:#8a6f30;opacity:0;transform:translateY(10px);}
+.tagline{font-family:'Jost',sans-serif;font-size:9px;font-weight:200;letter-spacing:0.5em;text-transform:uppercase;color:rgba(180,140,60,0.45);opacity:0;margin-top:28px;}
+.enter-btn{font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.38em;text-transform:uppercase;color:#c9a84c;border:1px solid rgba(201,168,76,0.4);padding:14px 40px;border-radius:1px;opacity:0;margin-top:36px;cursor:pointer;background:transparent;position:relative;z-index:5;transition:border-color .3s,color .3s,background .3s;}
+.enter-btn:hover{border-color:#c9a84c;background:rgba(201,168,76,0.06);color:#f0d98a;}
+.replay-btn{position:absolute;bottom:16px;right:18px;font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.2em;color:rgba(201,168,76,0.3);background:transparent;border:none;cursor:pointer;z-index:10;}
+.replay-btn:hover{color:#c9a84c;}
+.shimmer-overlay{position:absolute;inset:0;pointer-events:none;z-index:6;opacity:0;}
+</style>
+
+<h2 class="sr-only">Razzaq Luxe Fragrance brand welcome intro animation</h2>
+
+<div class="splash" id="splash">
+  <canvas id="bg"></canvas>
+  <div class="shimmer-overlay" id="shimmer"></div>
+
+  <div class="logo-wrap" id="logoWrap">
+    <svg id="logoSvg" width="200" height="210" viewBox="0 0 200 210">
+      <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f0d98a"/>
+          <stop offset="25%" stop-color="#c9a84c"/>
+          <stop offset="50%" stop-color="#f5e070"/>
+          <stop offset="75%" stop-color="#a07820"/>
+          <stop offset="100%" stop-color="#e8c84a"/>
+        </linearGradient>
+        <linearGradient id="goldGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f5e88a"/>
+          <stop offset="40%" stop-color="#c9a84c"/>
+          <stop offset="100%" stop-color="#7a5c10"/>
+        </linearGradient>
+        <linearGradient id="shimmerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+          <stop offset="45%" stop-color="rgba(255,255,255,0)"/>
+          <stop offset="50%" stop-color="rgba(255,240,180,0.7)"/>
+          <stop offset="55%" stop-color="rgba(255,255,255,0)"/>
+          <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="softglow">
+          <feGaussianBlur stdDeviation="6" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <clipPath id="logoClip"><rect x="0" y="0" width="200" height="210"/></clipPath>
+      </defs>
+
+      <g id="glowRing" opacity="0">
+        <polygon points="100,4 196,100 100,196 4,100" fill="none" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.3" filter="url(#softglow)"/>
+      </g>
+
+      <g id="outerDiamond" opacity="0">
+        <polygon points="100,8 192,100 100,192 8,100" fill="none" stroke="url(#goldGrad)" stroke-width="2.2" stroke-linejoin="round"/>
+        <polygon points="100,8 192,100 100,192 8,100" fill="none" stroke="rgba(245,220,100,0.15)" stroke-width="6"/>
+      </g>
+
+      <g id="innerDiamond" opacity="0">
+        <polygon points="100,22 178,100 100,178 22,100" fill="rgba(15,12,5,0.95)" stroke="url(#goldGrad2)" stroke-width="1.4"/>
+      </g>
+
+      <g id="letterR" opacity="0" transform="translate(100,100)">
+        <text text-anchor="middle" dominant-baseline="central"
+          font-family="'Cormorant Garamond',serif"
+          font-size="90" font-weight="400"
+          fill="url(#goldGrad)"
+          filter="url(#glow)"
+          dy="4">R</text>
+      </g>
+
+      <g id="cornerDots" opacity="0">
+        <circle cx="100" cy="8" r="2.5" fill="#c9a84c"/>
+        <circle cx="192" cy="100" r="2.5" fill="#c9a84c"/>
+        <circle cx="100" cy="192" r="2.5" fill="#c9a84c"/>
+        <circle cx="8" cy="100" r="2.5" fill="#c9a84c"/>
+      </g>
+
+      <rect id="shimmerRect" x="-200" y="0" width="200" height="210" fill="url(#shimmerGrad)" clip-path="url(#logoClip)" opacity="0.8"/>
+    </svg>
+
+    <div class="wordmark">
+      <div class="brand-main" id="brandMain">RAZZAQ LUXE</div>
+      <div class="brand-sub" id="brandSub">F &nbsp; R &nbsp; A &nbsp; G &nbsp; R &nbsp; A &nbsp; N &nbsp; C &nbsp; E</div>
+    </div>
+  </div>
+
+  <div class="tagline" id="tagline">Where Scent Becomes Identity</div>
+  <button class="enter-btn" id="enterBtn">Enter the Collection</button>
+  <button class="replay-btn" id="replayBtn">↺ Replay</button>
+</div>
+
+<script>
+const cvs=document.getElementById('bg');
+const ctx=cvs.getContext('2d');
+let W,H,pts=[],raf;
+
+function resize(){
+  W=cvs.offsetWidth||680;H=cvs.offsetHeight||600;
+  cvs.width=W;cvs.height=H;
+}
+resize();
+
+function mkPt(){
+  const a=Math.random()*Math.PI*2,r=60+Math.random()*220;
+  return{x:W/2+Math.cos(a)*r,y:H/2+Math.sin(a)*r,
+    vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,
+    life:0,max:100+Math.random()*200,s:Math.random()*1.4+.2,del:Math.random()*120};
+}
+
+function drawBg(){
+  ctx.clearRect(0,0,W,H);
+  const g=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,320);
+  g.addColorStop(0,'rgba(30,20,5,0.4)');
+  g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  pts.forEach(p=>{
+    if(p.del>0){p.del--;return;}
+    p.life++;p.x+=p.vx;p.y+=p.vy;
+    const pr=p.life/p.max,a=pr<.3?pr/.3:pr>.75?(1-pr)/.25:1;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.size||p.s,0,Math.PI*2);
+    ctx.fillStyle=`rgba(201,168,76,${a*.55})`;ctx.fill();
+    if(p.life>=p.max)Object.assign(p,mkPt());
+  });
+}
+
+function loop(){drawBg();raf=requestAnimationFrame(loop);}
+
+function css(el,props){Object.assign(el.style,props);}
+function tr(el,prop,dur,delay,ease){
+  el.style.transition=`${prop} ${dur}ms ${ease||'ease'} ${delay||0}ms`;
+}
+
+const glowRing=document.getElementById('glowRing');
+const outerD=document.getElementById('outerDiamond');
+const innerD=document.getElementById('innerDiamond');
+const letterR=document.getElementById('letterR');
+const cornerDots=document.getElementById('cornerDots');
+const shimRect=document.getElementById('shimmerRect');
+const brandMain=document.getElementById('brandMain');
+const brandSub=document.getElementById('brandSub');
+const tagline=document.getElementById('tagline');
+const enterBtn=document.getElementById('enterBtn');
+
+let timeouts=[];
+function later(fn,ms){timeouts.push(setTimeout(fn,ms));}
+function clearAll(){timeouts.forEach(clearTimeout);timeouts=[];}
+
+function runIntro(){
+  pts=Array.from({length:80},mkPt);
+  cancelAnimationFrame(raf);loop();
+
+  later(()=>{
+    glowRing.style.transition='opacity 1200ms ease';
+    glowRing.style.opacity='1';
+  },400);
+
+  later(()=>{
+    outerD.style.transition='opacity 600ms ease';
+    outerD.style.opacity='1';
+  },1000);
+
+  later(()=>{
+    innerD.style.transition='opacity 500ms ease';
+    innerD.style.opacity='1';
+  },1500);
+
+  later(()=>{
+    letterR.style.transition='opacity 800ms cubic-bezier(.34,1.56,.64,1), transform 800ms cubic-bezier(.34,1.56,.64,1)';
+    letterR.setAttribute('opacity','1');
+    letterR.style.opacity='1';
+  },2100);
+
+  later(()=>{
+    cornerDots.style.transition='opacity 400ms ease';
+    cornerDots.style.opacity='1';
+  },2700);
+
+  later(()=>{
+    shimRect.style.transition='x 900ms cubic-bezier(.4,0,.2,1)';
+    shimRect.setAttribute('x','400');
+  },3000);
+
+  later(()=>{
+    tr(brandMain,'opacity 900ms ease, transform 900ms ease',900,0,'ease');
+    brandMain.style.opacity='1';brandMain.style.transform='translateY(0)';
+  },3400);
+
+  later(()=>{
+    tr(brandSub,'opacity 700ms ease, transform 700ms ease',700,0,'ease');
+    brandSub.style.opacity='1';brandSub.style.transform='translateY(0)';
+  },3900);
+
+  later(()=>{
+    tr(tagline,'opacity 600ms ease',600,0);
+    tagline.style.opacity='1';
+  },4500);
+
+  later(()=>{
+    tr(enterBtn,'opacity 600ms ease',600,0);
+    enterBtn.style.opacity='1';
+  },5000);
+}
+
+function hardReset(){
+  clearAll();
+  cancelAnimationFrame(raf);
+  pts=[];ctx.clearRect(0,0,W,H);
+  glowRing.style.transition='none';glowRing.style.opacity='0';
+  outerD.style.transition='none';outerD.style.opacity='0';
+  innerD.style.transition='none';innerD.style.opacity='0';
+  letterR.style.transition='none';letterR.style.opacity='0';
+  cornerDots.style.transition='none';cornerDots.style.opacity='0';
+  shimRect.setAttribute('x','-200');
+  brandMain.style.transition='none';brandMain.style.opacity='0';brandMain.style.transform='translateY(18px)';
+  brandSub.style.transition='none';brandSub.style.opacity='0';brandSub.style.transform='translateY(10px)';
+  tagline.style.transition='none';tagline.style.opacity='0';
+  enterBtn.style.transition='none';enterBtn.style.opacity='0';
+}
+
+document.getElementById('replayBtn').onclick=()=>{hardReset();setTimeout(runIntro,120);};
+
+setTimeout(runIntro,300);
+</script>
