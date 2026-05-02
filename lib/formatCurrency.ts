@@ -1,4 +1,4 @@
-export function formatPkr(amount: number, _lang = "en"): string {
+export function formatPkr(amount: number): string {
   return new Intl.NumberFormat("en-PK", {
     style: "currency",
     currency: "PKR",

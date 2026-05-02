@@ -98,7 +98,7 @@ export function ProductDetail({ product }: { product: Product }) {
 
             {/* Price */}
             <p className="mt-5 font-sans text-3xl font-light tracking-tight text-ivory">
-              {formatPkr(product.price, "en")}
+              {formatPkr(product.price)}
             </p>
             <p className="mt-1 font-sans text-xs font-light tracking-wide text-muted-luxury">
               Taxes included. Shipping calculated at checkout.

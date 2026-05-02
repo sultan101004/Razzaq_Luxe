@@ -38,7 +38,7 @@ export function CartDrawer() {
           <p className="text-sm text-medium-grey">
             {items.length === 0
               ? t.cartEmpty
-              : `${items.length} ${itemLabel} • ${formatPkr(subtotal, "en")}`}
+              : `${items.length} ${itemLabel} • ${formatPkr(subtotal)}`}
           </p>
         </SheetHeader>
 
@@ -58,7 +58,7 @@ export function CartDrawer() {
           <div className="flex items-center justify-between text-sm text-brand-black">
             <span>{t.subtotalLabel}</span>
             <span className="text-lg font-semibold text-gold-main">
-              {formatPkr(subtotal, "en")}
+              {formatPkr(subtotal)}
             </span>
           </div>
           <Button

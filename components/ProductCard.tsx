@@ -135,7 +135,7 @@ export function ProductCard({
             isLarge ? "text-lg sm:text-xl" : "text-base sm:text-lg"
           )}
         >
-          {formatPkr(product.price, "en")}
+          {formatPkr(product.price)}
           <span className="ms-1.5 text-[10px] font-normal uppercase tracking-wider text-muted-luxury">
             · {product.size}
           </span>

@@ -251,16 +251,16 @@ export function CheckoutForm() {
                 <div className="space-y-3 border-t border-brand-black/[0.08] pt-4 text-sm text-brand-black">
                   <div className="flex justify-between">
                     <span>{t.subtotalLabel}</span>
-                    <span>{formatPkr(subtotal, "en")}</span>
+                    <span>{formatPkr(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-xs">
                     <span>{t.deliveryFee}</span>
-                    <span>{formatPkr(delivery, "en")}</span>
+                    <span>{formatPkr(delivery)}</span>
                   </div>
                   <div className="flex items-center justify-between border-t border-gold-main/18 pt-3 text-lg font-semibold">
                     <span>{t.grandTotal}</span>
                     <span className="text-gold-main">
-                      {formatPkr(grandTotal, "en")}
+                      {formatPkr(grandTotal)}
                     </span>
                   </div>
                 </div>

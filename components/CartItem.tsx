@@ -72,7 +72,7 @@ export function CartItem({ line }: CartItemProps) {
       </div>
       <div className="flex shrink-0 flex-col items-end pt-0.5 tabular-nums">
         <p className="text-sm font-semibold text-brand-black">
-          {formatPkr(product.price * quantity, "en")}
+          {formatPkr(product.price * quantity)}
         </p>
       </div>
     </div>
