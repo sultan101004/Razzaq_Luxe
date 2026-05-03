@@ -34,17 +34,37 @@ const scentBlocks = [
   { en: "Wood", ur: "لکڑی", Icon: Trees },
 ];
 
-const CTA_SVG = "/images/sporty/Sportysvg.svg";
+const CTA_FLAVOR_SVGS = [
+  { src: "/images/sporty/KhansAurabgremoved.svg", alt: "Khan's Aura by Razzaq Luxe" },
+  { src: "/images/sporty/Habibibgremoved.svg", alt: "Habibi by Razzaq Luxe" },
+  { src: "/images/sporty/Flourinebgremoved.svg", alt: "Florine by Razzaq Luxe" },
+  { src: "/images/sporty/Sportybgremoved.svg", alt: "Sporty by Razzaq Luxe" },
+] as const;
+
+const CTA_FLAVOR_INTERVAL_MS = 460;
+
+/** Fade out current → then fade in next (no crossfade / no overlap). */
+const CTA_FADE_S = 0.2;
 
 function CtaBanner() {
   const { t } = useLang();
+  const [flavorIndex, setFlavorIndex] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setFlavorIndex((i) => (i + 1) % CTA_FLAVOR_SVGS.length);
+    }, CTA_FLAVOR_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const active = CTA_FLAVOR_SVGS[flavorIndex];
 
   return (
     <section className="border-t border-white/[0.06] bg-[#0a0a0a] py-24">
-      <div className="mx-auto flex max-w-4xl items-center gap-12 px-6 lg:px-8">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-12 px-6 md:flex-row md:items-center lg:px-8">
 
         {/* Text — left half */}
-        <FadeIn className="flex-1 text-center md:text-start">
+        <FadeIn className="flex w-full flex-1 flex-col items-center text-center md:items-start md:text-start">
           <p className="eyebrow mb-5">Razzaq Luxe</p>
           <h2 className="font-serif font-light italic text-ivory">
             {t.ctaRibbon}
@@ -56,15 +76,27 @@ function CtaBanner() {
           </div>
         </FadeIn>
 
-        {/* Product image — right half */}
-        <div className="relative hidden h-72 w-56 shrink-0 md:block">
-          <Image
-            src={CTA_SVG}
-            alt=""
-            fill
-            sizes="224px"
-            className="object-contain scale-[1.6] origin-center"
-          />
+        {/* Product — right half: fade out, then fade in (sequential) */}
+        <div className="relative h-72 w-56 shrink-0 md:h-80 md:w-64">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={active.src}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: CTA_FADE_S, ease: [0.4, 0, 0.2, 1] }}
+              className="absolute inset-0 will-change-opacity"
+            >
+              <Image
+                src={active.src}
+                alt={active.alt}
+                fill
+                sizes="(max-width:768px) 224px, 256px"
+                className="object-contain scale-[1.6] origin-center"
+                priority={flavorIndex === 0}
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
 
       </div>
